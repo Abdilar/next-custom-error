@@ -7,7 +7,9 @@ const Character: NextPage = () => {
   const [error, setError] = useState<{error: string}>()
 
   useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
+    // NOTE: the right api address is https://rickandmortyapi.com/api/character
+    // NOTE: you should handle the error on the client side such as error boundaries
+    fetch("https://rickandmortyapi.com/api/charact")
       .then((response) => response.json())
       .then((data) => {
         if (data?.results) {
