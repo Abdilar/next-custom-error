@@ -6,7 +6,8 @@ const Locations: NextPage<{ locations: {results: LocationType[]} }> = ({ locatio
     <div>
       <h1>Locations Page</h1>
       <div>
-        {locations.results.map((item) => (
+        {/* NOTE: The logic error on the server side cause 500 error and show the 500 page */}
+        {locations?.results?.map((item) => (
           <h2 key={item.id}>{item.name}</h2>
         ))}
       </div>
@@ -17,6 +18,7 @@ const Locations: NextPage<{ locations: {results: LocationType[]} }> = ({ locatio
 export default Locations;
 
 export const getServerSideProps = async () => {
+  // NOTE: the right api address is https://rickandmortyapi.com/api/location
   const locations = await fetch(
     "https://rickandmortyapi.com/api/locati"
   ).then((response) => response.json());
